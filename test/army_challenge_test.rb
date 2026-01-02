@@ -9,14 +9,14 @@ require_relative '../lib/battle'
 
 class ArmyTest
   def run
-    puts "=== Army Challenge Test Suite ==="
+    puts "Army Challenge Test Suite"
     test_unit_creation
     test_civilization_initialization
     test_training
     test_transformation
     test_battle
     test_error_handling
-    puts "\n✓ All tests passed!"
+    puts "\nAll tests passed!"
   end
 
   private
@@ -30,7 +30,7 @@ class ArmyTest
     assert_equal 5, pikeman.base_strength, "Pikeman base strength"
     assert_equal 10, archer.base_strength, "Archer base strength"
     assert_equal 20, knight.base_strength, "Knight base strength"
-    puts "✓ Unit creation successful"
+    puts "Unit creation successful"
   end
 
   def test_civilization_initialization
@@ -43,7 +43,7 @@ class ArmyTest
     assert_equal 30, english_army.units.length, "English army unit count (10+10+10)"
     assert_equal 28, byzantine_army.units.length, "Byzantine army unit count (5+8+15)"
     assert_equal 1000, chinese_army.gold_coins, "Initial gold"
-    puts "✓ Civilization initialization successful"
+    puts "Civilization initialization successful"
   end
 
   def test_training
@@ -60,7 +60,7 @@ class ArmyTest
     3.times { army.train_unit(pikeman) }
     assert_equal initial_strength + (3 * 4), pikeman.strength, "Pikeman trained 4 times total"
     assert_equal 1000 - (4 * 10), army.gold_coins, "Gold deducted for 4 trainings"
-    puts "✓ Training successful"
+    puts "Training successful"
   end
 
   def test_transformation
@@ -79,7 +79,7 @@ class ArmyTest
     assert_equal training_bonus, new_archer.training_bonus, "Training bonus preserved"
     assert_equal initial_unit_count, army.units.length, "Unit count unchanged"
     assert_equal 1000 - (3 * 10) - 30, army.gold_coins, "Gold deducted for training and transformation"
-    puts "✓ Transformation successful with bonus preservation"
+    puts "Transformation successful with bonus preservation"
   end
 
   def test_battle
@@ -108,7 +108,7 @@ class ArmyTest
 
     assert_equal 1, attacker.battle_history.length, "Battle recorded in attacker history"
     assert_equal 1, defender.battle_history.length, "Battle recorded in defender history"
-    puts "✓ Battle resolution successful"
+    puts "Battle resolution successful"
   end
 
   def test_error_handling
@@ -121,7 +121,7 @@ class ArmyTest
       army.transform_unit(knight)
       raise "Should have raised TransformationNotAllowedError"
     rescue TransformationNotAllowedError
-      puts "✓ Transformation error caught correctly"
+      puts "Transformation error caught correctly"
     end
 
     # Test insufficient gold
@@ -131,7 +131,7 @@ class ArmyTest
       army.train_unit(pikeman)
       raise "Should have raised InsufficientGoldError"
     rescue InsufficientGoldError
-      puts "✓ Insufficient gold error caught correctly"
+      puts "Insufficient gold error caught correctly"
     end
 
     # Test invalid civilization
@@ -139,7 +139,7 @@ class ArmyTest
       Army.new(:martian)
       raise "Should have raised InvalidCivilizationError"
     rescue InvalidCivilizationError
-      puts "✓ Invalid civilization error caught correctly"
+      puts "Invalid civilization error caught correctly"
     end
   end
 

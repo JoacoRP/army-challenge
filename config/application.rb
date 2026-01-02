@@ -1,19 +1,6 @@
 require_relative "boot"
 
-# Load Rails without ActiveRecord since we don't use a database
-require "rails"
-%w(
-  active_model
-  active_job
-  action_controller
-  action_view
-  action_mailer
-  action_cable
-  sprockets/railtie
-  rails/test_unit/railtie
-).each do |framework|
-  require "#{framework}"
-end
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -24,6 +11,9 @@ module ArmyChallenge
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
+    # Disable ActiveRecord since we don't use a database
+    config.generators.skip_git = true
+    
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
