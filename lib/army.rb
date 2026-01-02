@@ -19,7 +19,7 @@ class Army
   # Raises InsufficientGoldError if not enough gold
   def train_unit(unit)
     raise NoUnitsAvailableError, "Unit is not part of this army" unless @units.include?(unit)
-    
+
     cost = unit.training_cost
     raise InsufficientGoldError, "Insufficient gold (need #{cost}, have #{@gold_coins})" if @gold_coins < cost
 
@@ -57,7 +57,7 @@ class Army
   # Remove the two strongest units (used when losing a battle)
   def lose_two_strongest_units
     raise NoUnitsAvailableError, "Not enough units to lose" if @units.length < 2
-    
+
     strongest = strongest_unit
     @units.delete(strongest)
     second_strongest = strongest_unit
@@ -67,7 +67,7 @@ class Army
   # Remove one unit (used in case of tie in battle)
   def lose_weakest_unit
     raise NoUnitsAvailableError, "No units available to lose" if @units.empty?
-    
+
     weak = weakest_unit
     @units.delete(weak)
   end

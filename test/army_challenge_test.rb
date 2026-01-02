@@ -1,11 +1,11 @@
-require_relative '../lib/exceptions'
-require_relative '../lib/units/unit'
-require_relative '../lib/units/pikeman'
-require_relative '../lib/units/archer'
-require_relative '../lib/units/knight'
-require_relative '../lib/civilization'
-require_relative '../lib/army'
-require_relative '../lib/battle'
+require_relative "../lib/exceptions"
+require_relative "../lib/units/unit"
+require_relative "../lib/units/pikeman"
+require_relative "../lib/units/archer"
+require_relative "../lib/units/knight"
+require_relative "../lib/civilization"
+require_relative "../lib/army"
+require_relative "../lib/battle"
 
 class ArmyTest
   def run
@@ -94,7 +94,7 @@ class ArmyTest
 
     # Check that battle was resolved
     assert_equal true, battle.is_a?(Battle), "Battle resolved"
-    
+
     # If attacker won
     if battle.winner == attacker
       assert_equal initial_attacker_gold + 100, attacker.gold_coins, "Winner received gold"
