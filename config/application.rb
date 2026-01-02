@@ -1,6 +1,19 @@
 require_relative "boot"
 
-require "rails/all"
+# Load Rails without ActiveRecord since we don't use a database
+require "rails"
+%w(
+  active_model
+  active_job
+  action_controller
+  action_view
+  action_mailer
+  action_cable
+  sprockets/railtie
+  rails/test_unit/railtie
+).each do |framework|
+  require "#{framework}"
+end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
